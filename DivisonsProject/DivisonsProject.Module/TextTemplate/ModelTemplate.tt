@@ -1,0 +1,38 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ output extension=".cs" #>
+<#@ assembly name="System.Core" #>
+<#@ assembly name="$(SolutionDir)DivisonsProject.Module\bin\Debug\DivisonsProject.Module.dll" #>
+<#@ import namespace="System" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Reflection" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="Microsoft.VisualStudio.TextTemplating" #>
+<#@ import namespace="DivisonsProject.Module.BusinessObjects" #>
+<#@ import namespace="DivisonsProject.Module" #>
+<#@ import namespace="DevExpress.Xpo" #>
+<#
+  // choose a convenient "anchor type" from your model, e.g., a base class or enum type, etc
+  var model = typeof(Adress).Assembly.GetTypes().Where(_ => _.CustomAttributes.Any(x=>x.AttributeType == typeof(ExportableAttribute)));;
+#>
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using DivisonsProject.Module.BusinessObjects;
+using DevExpress.Xpo;
+
+namespace DummyViewModels
+{
+
+<# foreach (var type in model) { #>
+	<# foreach (var att in type.CustomAttributes) { #><#= att #>
+	<# } #>public class <#= type.Name #>{
+<# foreach (var property in type.GetProperties().Where(_ => _.CustomAttributes.Any(x=>x.AttributeType == typeof(ExportableAttribute)))) { #>
+       <# if(property.PropertyType == typeof( XPCollection<Workplace> )) { #>public <#= property.PropertyType.Name #> <#= property.Name #> { get; set; }<# } #>
+	   <# else { #>public <#= property.PropertyType.Name #> <#= property.Name #>  <# } #>
+<# } #>
+    }
+<# } #>
+}

@@ -1,0 +1,4 @@
+C:\Users\KutylaK\source\repos\DivisonsProject\DivisonsProject.Module\bin\Debug\DivisonsProject.Module.dll
+C:\Users\KutylaK\source\repos\DivisonsProject\DivisonsProject.Module\obj\Debug\DivisonsProject.Module.DivisonsProjectModule.resources
+C:\Users\KutylaK\source\repos\DivisonsProject\DivisonsProject.Module\obj\Debug\DivisonsProject.Module.csproj.GenerateResource.cache
+C:\Users\KutylaK\source\repos\DivisonsProject\DivisonsProject.Module\obj\Debug\DivisonsProject.Module.csproj.CoreCompileInputs.cache
